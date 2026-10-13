@@ -25,3 +25,38 @@ function updateCountdown() {
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
+
+const map = L.map('map', {
+    zoomControl: false,
+    dragging: false,
+    touchZoom: false,
+    scrollWheelZoom: false,
+    doubleClickZoom: false,
+    boxZoom: false,
+    keyboard: false
+}).setView([35.1709, 136.8815], 16);
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+}).addTo(map);
+
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            map.setView([lat, lng], 17);
+
+            L.circleMarker([lat, lng], {
+                color: '#0ff',
+                radius: 8,
+                weight: 2,
+                fillColor: '#0ff',
+                fillOpacity: 0.8
+            }).addTo(map);
+        },
+        (error) => {
+            console.error(error);
+        }
+    );
+}
