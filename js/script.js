@@ -25,3 +25,15 @@ function updateCountdown() {
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
+
+// =========================================
+// ローディング画面の制御
+// =========================================
+window.addEventListener('load', () => {
+    const loadingScreen = document.getElementById('loading-screen');
+    
+    // 2.5秒後に.hiddenクラスを付与してフェードアウト
+    setTimeout(() => {
+        loadingScreen.classList.add('hidden');
+    }, 2500);
+});
