@@ -9,7 +9,6 @@ body, html {
     height: 100vh;
     overflow: hidden;
     background-color: #000;
-    font-family: 'Courier New', Courier, monospace;
     color: #0ff;
     touch-action: none;
 }
@@ -38,7 +37,8 @@ body, html {
 
 .container {
     position: relative;
-    width: 100%;
+    width: 100%;         /* 変更: 90% から 100% へ */
+    padding: 0 20px;     /* 追加: 左右に20pxの余白 */
     height: 100%;
     z-index: 3;
     display: flex;
@@ -48,38 +48,38 @@ body, html {
 }
 
 .countdown-wrapper {
+    width: 100%;         /* 追加: コンテナの幅（左右20px空き）いっぱいに広げる */
     text-align: center;
-    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    text-shadow: 0 0 5px #0ff, 0 0 40px #0ff;
     background: rgba(0, 0, 0, 0.5);
     padding: 20px;
     border: 1px solid #0ff;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.3) inset;
+    font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', sans-serif;
 }
 
 .title {
     font-size: 1.2rem;
     margin-bottom: 15px;
     letter-spacing: 0.1em;
+    font-weight: 500; /* 追記: 細めのウェイトにする場合 */
 }
 
 .timer {
     font-size: 1.8rem;
-    font-weight: bold;
+    font-weight: 500; /* 数値で太さを指定する場合（700はboldとほぼ同じ） */
     letter-spacing: 0.05em;
-}
-
-.timer span {
-    font-size: 2.2rem;
-    display: inline-block;
-    min-width: 2.5rem;
 }
 
 .current-date {
     position: absolute;
-    bottom: 30px;
+    bottom: 20px;
     left: 20px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     text-shadow: 0 0 8px #0ff;
     letter-spacing: 0.1em;
+    font-family: 'DIN', 'DIN Alternate', 'DIN Condensed', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
 }
