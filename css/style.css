@@ -87,6 +87,19 @@ body, html {
     line-height: 1.6;
 }
 
+.created-date {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: .8rem;
+    text-shadow: 0 0 8px #0ff;
+    letter-spacing: 0.1em;
+    font-family: 'DIN', 'DIN Alternate', 'DIN Condensed', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    text-align: right;
+}
+
 /* =========================================
    ローディングアニメーション
 ========================================= */
