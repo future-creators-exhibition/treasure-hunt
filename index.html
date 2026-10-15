@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>treasure hunt</title>
     <link rel="icon" href="images/favicon.png">
+    <!-- 地図用ライブラリのCSSを追加 -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -18,21 +20,22 @@
         </div>
     </div>
 
-    <div class="background-map"></div>
+    <!-- 背景画像を地図(id="map")に変更 -->
+    <div id="map" class="background-map"></div>
     <div class="overlay"></div>
     
     <div class="container">
         <div class="countdown-wrapper">
-            <div class="title">2127年1月9日まで</div>
+            <div class="title">2127/01/09まで...</div>
             <div class="timer">
-                <span id="days">00</span>日<br>
-                <span id="hours">00</span>時間
-                <span id="minutes">00</span>分
-                <span id="seconds">00</span>秒
+                <span id="days">00</span>d:<br>
+                <span id="hours">00</span>h
+                <span id="minutes">00</span>m
+                <span id="seconds">00</span>s
             </div>
         </div>
         
-        <div class="current-date">2027.01.09<br>
+        <div class="current-date">2027/01/09<br>
                                     nagao ryohei<br>
                                     kouhira natumi<br> 
                                     tateiwa daiya<br>
@@ -44,6 +47,8 @@
         </div>
     </div>
 
+    <!-- 地図用ライブラリのJSを追加 -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

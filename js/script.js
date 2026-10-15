@@ -12,6 +12,7 @@ function updateCountdown() {
         return;
     }
 
+    // 計算式の崩れを修正
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -37,3 +38,43 @@ window.addEventListener('load', () => {
         loadingScreen.classList.add('hidden');
     }, 2500);
 });
+
+// =========================================
+// 地図と現在地の取得 (SF風マップ)
+// =========================================
+const map = L.map('map', {
+    zoomControl: false,
+    dragging: false,
+    touchZoom: false,
+    scrollWheelZoom: false,
+    doubleClickZoom: false,
+    boxZoom: false,
+    keyboard: false
+}).setView([35.1709, 136.8815], 16); // デフォルトは名古屋駅
+
+// 無料のOpenStreetMapデータを読み込み
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+// 位置情報を取得して現在地に移動＆マーカー表示
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            map.setView([lat, lng], 17);
+
+            L.circleMarker([lat, lng], {
+                color: '#0ff',
+                radius: 8,
+                weight: 2,
+                fillColor: '#0ff',
+                fillOpacity: 0.8
+            }).addTo(map);
+        },
+        (error) => {
+            console.error("位置情報の取得エラー:", error);
+        }
+    );
+}
